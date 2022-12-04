@@ -5,18 +5,28 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.ListView
 import androidx.navigation.findNavController
 
 class HomeFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+    {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        val btnAddNewQuote = view.findViewById<Button>(R.id.btnAddNewQuote)
 
+
+        val btnAddNewQuote = view.findViewById<Button>(R.id.btnAddNewQuote)
         btnAddNewQuote.setOnClickListener {
             view.findNavController().navigate(R.id.action_homeFragment_to_addNewQuoteFragment)
         }
+
+        val btnManageMyQuotes = view.findViewById<Button>(R.id.btnManageMyQuotes)
+        btnManageMyQuotes.setOnClickListener {
+            view.findNavController().navigate(R.id.action_homeFragment_to_manageMyQuotesFragment)
+        }
+
         return view
     }
 

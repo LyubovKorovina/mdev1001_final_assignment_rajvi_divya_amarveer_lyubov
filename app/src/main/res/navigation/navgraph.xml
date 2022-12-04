@@ -12,10 +12,18 @@
         <action
             android:id="@+id/action_homeFragment_to_addNewQuoteFragment"
             app:destination="@id/addNewQuoteFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_manageMyQuotesFragment"
+            app:destination="@id/manageMyQuotesFragment" />
     </fragment>
     <fragment
         android:id="@+id/addNewQuoteFragment"
         android:name="com.example.mdev1001_finalassignment_rajvi_divya_amarveer_lyubov.AddNewQuoteFragment"
         android:label="fragment_add_new_quote"
         tools:layout="@layout/fragment_add_new_quote" />
+    <fragment
+        android:id="@+id/manageMyQuotesFragment"
+        android:name="com.example.mdev1001_finalassignment_rajvi_divya_amarveer_lyubov.ManageMyQuotesFragment"
+        android:label="fragment_manage_my_quotes"
+        tools:layout="@layout/fragment_manage_my_quotes" />
 </navigation>
