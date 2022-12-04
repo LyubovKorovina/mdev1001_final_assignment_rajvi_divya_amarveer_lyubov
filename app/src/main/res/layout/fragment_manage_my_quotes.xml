@@ -22,13 +22,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_margin="19dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginBottom="19dp"
             android:clickable="true"
-            android:src="@drawable/plus"
-            android:elevation="15dp"/>
+            android:elevation="15dp"
+            android:src="@drawable/plus" />
 
     </RelativeLayout>
 
