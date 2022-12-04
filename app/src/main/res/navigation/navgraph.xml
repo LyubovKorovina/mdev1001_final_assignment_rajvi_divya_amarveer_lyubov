@@ -10,9 +10,6 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_addNewQuoteFragment"
-            app:destination="@id/addNewQuoteFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_manageMyQuotesFragment"
             app:destination="@id/manageMyQuotesFragment" />
     </fragment>
@@ -25,5 +22,9 @@
         android:id="@+id/manageMyQuotesFragment"
         android:name="com.example.mdev1001_finalassignment_rajvi_divya_amarveer_lyubov.ManageMyQuotesFragment"
         android:label="fragment_manage_my_quotes"
-        tools:layout="@layout/fragment_manage_my_quotes" />
+        tools:layout="@layout/fragment_manage_my_quotes" >
+        <action
+            android:id="@+id/action_manageMyQuotesFragment_to_addNewQuoteFragment"
+            app:destination="@id/addNewQuoteFragment" />
+    </fragment>
 </navigation>
