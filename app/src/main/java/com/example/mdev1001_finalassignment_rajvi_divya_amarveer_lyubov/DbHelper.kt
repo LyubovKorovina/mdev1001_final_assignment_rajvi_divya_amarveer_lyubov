@@ -7,16 +7,10 @@ import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
 
 class DbHelper(context: Context) : SQLiteOpenHelper(context, "QUOTESDB", null, 1) {
+    // below is the method for creating a database by a sqlite query
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL("CREATE TABLE MY_QUOTES(_id integer primary key autoincrement, QUOTE TEXT, AUTHOR TEXT);")
     }
-
-    // below is the method for creating a database by a sqlite query
-//    override fun onCreate(db: SQLiteDatabase) {
-//        val query = ("CREATE TABLE MY_QUOTES  ( _id  INTEGER PRIMARY KEY AUTOINCREMENT, QUOTE TEXT, AUTHOR TEXT)")
-//        // we are calling sqlite method for executing our query
-//        db.execSQL(query)
-//    }
 
     // this method is to check if table already exists
     override fun onUpgrade(db: SQLiteDatabase, p1: Int, p2: Int) {
@@ -37,6 +31,22 @@ class DbHelper(context: Context) : SQLiteOpenHelper(context, "QUOTESDB", null, 1
         val newRowId = sqliteDb.insert("MY_QUOTES",null, values)
         return newRowId.toInt() != -1
 
+    }
+
+    fun getAllQuotes() : ArrayList<QuoteModel> {
+        val sqliteDatabase = this.readableDatabase
+        var cursor = sqliteDatabase.rawQuery("Select * from MY_QUOTES", null)
+        val quotes = ArrayList<QuoteModel>()
+
+        while (cursor.moveToNext()) {
+            val model = QuoteModel(
+                cursor.getInt(0),
+                cursor.getString(1),
+                cursor.getString(2)
+            )
+            quotes.add(model)
+        }
+        return quotes
     }
 
     // below method is to get all data from our database

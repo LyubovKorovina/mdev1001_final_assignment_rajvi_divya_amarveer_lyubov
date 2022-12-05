@@ -8,13 +8,26 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ManageMyQuotesFragment : Fragment() {
 
+    lateinit var db : DbHelper
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
         val view = inflater.inflate(R.layout.fragment_manage_my_quotes, container, false)
+        db = DbHelper(view.context)
+
+        val listOfAllQuotes = db.getAllQuotes()
+
+        val recyclerView = view.findViewById<RecyclerView>(R.id.listOfQuotes)
+        recyclerView.layoutManager = LinearLayoutManager(view.context)
+        val quoteAdapter = QuoteAdapter(view.context, listOfAllQuotes)
+        recyclerView.adapter = quoteAdapter
+
 
         // this is the code for btn Add quote
         val btnAddNewQuote = view.findViewById<FloatingActionButton>(R.id.btnAdd)

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
@@ -29,6 +30,12 @@ class AddNewQuoteFragment : Fragment() {
                 quote = quote.text.toString(),
                 author = author.text.toString()
             )
+
+            // Toast to message on the screen
+            Toast.makeText(this.view?.context, "Quote was added", Toast.LENGTH_LONG).show()
+
+            quote.text.clear()
+            author.text.clear()
         }
 
         return view

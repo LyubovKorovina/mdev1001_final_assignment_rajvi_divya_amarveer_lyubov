@@ -36,7 +36,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginRight="5dp"
             android:padding="10dp"
-            android:text="Author"/>
+            android:text="Author" />
 
         <Button
             android:layout_width="80dp"
