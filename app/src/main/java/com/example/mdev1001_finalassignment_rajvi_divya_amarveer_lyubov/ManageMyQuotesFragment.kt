@@ -1,7 +1,9 @@
 package com.example.mdev1001_finalassignment_rajvi_divya_amarveer_lyubov
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
+import android.text.Editable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,15 +14,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
+
 class ManageMyQuotesFragment : Fragment() {
 
     lateinit var db : DbHelper
+    private var quoteId = 0
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
+
         val view = inflater.inflate(R.layout.fragment_manage_my_quotes, container, false)
-
-
         db = DbHelper(view.context)
 
         val listOfAllQuotes = db.getAllQuotes()

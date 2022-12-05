@@ -49,22 +49,38 @@ class DbHelper(context: Context) : SQLiteOpenHelper(context, "QUOTESDB", null, 1
         return quotes
     }
 
+    fun getSingleQuote(quoteId : Int) : QuoteModel{
+        val sqliteDb = this.readableDatabase
+        var cursor = sqliteDb.rawQuery("SELECT * FROM MY_QUOTES WHERE _id=$quoteId", null)
+        val quotes = ArrayList<QuoteModel>()
+
+        cursor.moveToFirst()
+
+        val quote = QuoteModel(
+            cursor.getInt(0),
+            cursor.getString(1),
+            cursor.getString(2)
+        )
+        cursor.close()
+
+        return quote
+    }
+
     fun updateQuote(quoteId:Int, quote : String, author : String) : Boolean{
         val sqliteDb = this.writableDatabase
         val values = contentValuesOf().apply {
             put("QUOTE", quote)
             put("AUTHOR", author)
         }
-        val result = sqliteDb.update("MY_QUOTES", values, "id=$quoteId",null)
+        val result = sqliteDb.update("MY_QUOTES", values, "_id=$quoteId",null)
 
         return result >= 1
     }
 
     fun deleteQuote(quoteId: Int) : Boolean{
         val sqliteDb = this.writableDatabase
-        return sqliteDb.delete("MY_QUOTES", "id=$quoteId", null) >= 1
 
+        return sqliteDb.delete("MY_QUOTES", "_id=$quoteId", null) >= 1
     }
-
 
 }
