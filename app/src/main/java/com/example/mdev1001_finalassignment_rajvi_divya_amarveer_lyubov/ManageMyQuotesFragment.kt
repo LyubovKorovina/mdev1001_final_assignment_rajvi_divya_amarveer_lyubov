@@ -19,6 +19,8 @@ class ManageMyQuotesFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
         val view = inflater.inflate(R.layout.fragment_manage_my_quotes, container, false)
+
+
         db = DbHelper(view.context)
 
         val listOfAllQuotes = db.getAllQuotes()
@@ -35,8 +37,14 @@ class ManageMyQuotesFragment : Fragment() {
             view.findNavController().navigate(R.id.action_manageMyQuotesFragment_to_addNewQuoteFragment)
         }
 
-        return view
+//        // this is the code for btn Update quote
+//        val btnUpdateQuote = view.findViewById<Button>(R.id.btnUpdate)
+//        btnUpdateQuote.setOnClickListener {
+//            view.findNavController().navigate(R.id.action_manageMyQuotesFragment_to_updateQuoteFragment)
+//        }
 
+        return view
     }
+
 
 }

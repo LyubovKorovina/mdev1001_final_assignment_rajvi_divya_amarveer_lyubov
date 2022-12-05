@@ -26,5 +26,13 @@
         <action
             android:id="@+id/action_manageMyQuotesFragment_to_addNewQuoteFragment"
             app:destination="@id/addNewQuoteFragment" />
+        <action
+            android:id="@+id/action_manageMyQuotesFragment_to_updateQuoteFragment"
+            app:destination="@id/updateQuoteFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/updateQuoteFragment"
+        android:name="com.example.mdev1001_finalassignment_rajvi_divya_amarveer_lyubov.UpdateQuoteFragment"
+        android:label="fragment_update_quote"
+        tools:layout="@layout/fragment_update_quote" />
 </navigation>

@@ -34,8 +34,8 @@ class DbHelper(context: Context) : SQLiteOpenHelper(context, "QUOTESDB", null, 1
     }
 
     fun getAllQuotes() : ArrayList<QuoteModel> {
-        val sqliteDatabase = this.readableDatabase
-        var cursor = sqliteDatabase.rawQuery("Select * from MY_QUOTES", null)
+        val sqliteDb = this.readableDatabase
+        var cursor = sqliteDb.rawQuery("Select * from MY_QUOTES", null)
         val quotes = ArrayList<QuoteModel>()
 
         while (cursor.moveToNext()) {
@@ -49,37 +49,22 @@ class DbHelper(context: Context) : SQLiteOpenHelper(context, "QUOTESDB", null, 1
         return quotes
     }
 
-    // below method is to get all data from our database
-    fun getQuote(): Cursor? {
+    fun updateQuote(quoteId:Int, quote : String, author : String) : Boolean{
+        val sqliteDb = this.writableDatabase
+        val values = contentValuesOf().apply {
+            put("QUOTE", quote)
+            put("AUTHOR", author)
+        }
+        val result = sqliteDb.update("MY_QUOTES", values, "id=$quoteId",null)
 
-        // here we are creating a readable variable of our database as we want to read value from it
-        val db = this.readableDatabase
+        return result >= 1
+    }
 
-        // below code returns a cursor to read data from the database
-        return db.rawQuery("SELECT * FROM MY_QUOTES", null)
+    fun deleteQuote(quoteId: Int) : Boolean{
+        val sqliteDb = this.writableDatabase
+        return sqliteDb.delete("MY_QUOTES", "id=$quoteId", null) >= 1
 
     }
 
-    // here we have defined variables for our database
-    companion object{
-
-        // below is variable for database name
-        private val DATABASE_NAME = "QUOTESDB"
-
-        // below is the variable for database version
-        private val DATABASE_VERSION = 1
-
-        // below is the variable for table name
-        val TABLE_NAME = "MY_QUOTES"
-
-        // below is the variable for id column
-        val _id = "id"
-
-        // below is the variable for quote column
-        val QUOTE = "quote"
-
-        // below is the variable for author column
-        val AUTHOR = "author"
-    }
 
 }

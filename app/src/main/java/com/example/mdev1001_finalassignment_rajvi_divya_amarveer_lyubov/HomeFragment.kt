@@ -5,17 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.ListView
 import androidx.navigation.findNavController
-import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase
-import android.database.sqlite.SQLiteOpenHelper
-import android.util.Log
 import android.widget.TextView
 import com.android.volley.Request
-import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 
 class HomeFragment : Fragment() {
@@ -47,7 +40,7 @@ class HomeFragment : Fragment() {
             Request.Method.GET,
             url,
             null,
-            Response.Listener {
+            {
                 val quotesJsonArray = it.getJSONArray("quotes")
                 //  Log.d("abc", quotesJsonArray[0].toString())
                 val  quotesArray = ArrayList<Quotes>()
@@ -65,7 +58,7 @@ class HomeFragment : Fragment() {
                 textv.text = quotesArray[random].quote
 
             },
-            Response.ErrorListener {
+            {
 
             }
         )

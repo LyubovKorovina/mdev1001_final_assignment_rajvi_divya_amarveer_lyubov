@@ -11,12 +11,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        var helper = DbHelper(applicationContext)
-//        var db :SQLiteDatabase = helper.readableDatabase
-//
-//        //retrieve all the records, stored in rs variable
-//        var rs: Cursor = db.rawQuery("SELECT * FROM WORLD_QUOTES", null)
-//        if (rs.moveToFirst()) {
-//        }
     }
 }
