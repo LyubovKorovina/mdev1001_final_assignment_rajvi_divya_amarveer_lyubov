@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.navigation.findNavController
 import com.example.mdev1001_finalassignment_rajvi_divya_amarveer_lyubov.databinding.FragmentUpdateQuoteBinding
 
 class UpdateQuoteFragment : Fragment() {
@@ -49,11 +48,9 @@ class UpdateQuoteFragment : Fragment() {
         }
 
 
-
-//        quote = view.findViewById(R.id.inputQuote)
-//        author = view.findViewById(R.id.inputAuthor)
-
-
+        binding.btnDeleteQuote.setOnClickListener {
+            db.deleteQuote(quoteId)
+        }
 
         return view
     }

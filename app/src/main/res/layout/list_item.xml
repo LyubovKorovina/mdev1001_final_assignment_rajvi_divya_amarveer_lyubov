@@ -43,28 +43,28 @@
             android:textColor="@color/black" />
 
         <Button
-            android:id="@+id/btnUpdate"
+            android:id="@+id/btnManage"
             android:layout_width="80dp"
             android:layout_height="45dp"
             android:layout_alignParentRight="true"
             android:layout_marginTop="50dp"
             android:layout_marginRight="8dp"
             android:padding="10dp"
-            android:text="Update"
+            android:text="Manage"
             android:textColor="@color/white"
             android:textSize="10sp" />
 
-        <Button
-            android:id="@+id/btnDelete"
-            android:layout_width="80dp"
-            android:layout_height="45dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="8dp"
-            android:padding="10dp"
-            android:text="Delete"
-            android:textColor="@color/white"
-            android:textSize="10sp" />
+<!--        <Button-->
+<!--            android:id="@+id/btnDelete"-->
+<!--            android:layout_width="80dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginRight="8dp"-->
+<!--            android:padding="10dp"-->
+<!--            android:text="Delete"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="10sp" />-->
 
     </RelativeLayout>
 

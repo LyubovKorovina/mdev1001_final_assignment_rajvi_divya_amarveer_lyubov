@@ -18,7 +18,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class ManageMyQuotesFragment : Fragment() {
 
     lateinit var db : DbHelper
-    private var quoteId = 0
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
@@ -42,13 +41,12 @@ class ManageMyQuotesFragment : Fragment() {
         }
 
 //        // this is the code for btn Update quote
-//        val btnUpdateQuote = view.findViewById<Button>(R.id.btnUpdate)
-//        btnUpdateQuote.setOnClickListener {
+//        val btnManage = view.findViewById<Button>(R.id.manageMyQuotes)
+//        btnManage.setOnClickListener {
 //            view.findNavController().navigate(R.id.action_manageMyQuotesFragment_to_updateQuoteFragment)
 //        }
 
         return view
     }
-
 
 }
