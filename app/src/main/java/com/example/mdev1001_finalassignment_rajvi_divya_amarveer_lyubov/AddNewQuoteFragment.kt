@@ -26,7 +26,7 @@ class AddNewQuoteFragment : Fragment() {
 
         // below we add on click listener to add quote button
         btnAddNew.setOnClickListener{
-            val result = db.addQuote(
+            db.addQuote(
                 quote = quote.text.toString(),
                 author = author.text.toString()
             )

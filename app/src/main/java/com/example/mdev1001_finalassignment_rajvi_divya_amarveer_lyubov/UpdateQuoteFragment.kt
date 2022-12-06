@@ -9,54 +9,62 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
-import com.example.mdev1001_finalassignment_rajvi_divya_amarveer_lyubov.databinding.FragmentUpdateQuoteBinding
+import androidx.navigation.findNavController
 
 class UpdateQuoteFragment : Fragment() {
 
     lateinit var db : DbHelper
     private var quoteId = 0
-    lateinit var quote: EditText
-    lateinit var author: EditText
+    lateinit var updateQuote: EditText
+    lateinit var updateAuthor: EditText
 
-    private var _binding:FragmentUpdateQuoteBinding? = null
-    private val binding get() = _binding!!
     override fun onAttach(context: Context) {
         super.onAttach(context)
         quoteId = arguments?.getInt("quoteId") ?: 0
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        //db = DbHelper(view.context)
+        val view = inflater.inflate(R.layout.fragment_update_quote, container, false)
 
         fun String.toEditable(): Editable =  Editable.Factory.getInstance().newEditable(this)
 
-        _binding = FragmentUpdateQuoteBinding.inflate(layoutInflater, container, false)
-        val view = binding.root
         db = DbHelper(view.context)
 
-        val quote = db.getSingleQuote(quoteId)
+        updateQuote = view.findViewById(R.id.updateQuote)
+        updateAuthor =view.findViewById(R.id.updateAuthor)
 
-        binding.updateQuote.text = quote.quote.toEditable()
-        binding.updateAuthor.text = quote.author.toEditable()
+        var quote = db.getSingleQuote(quoteId)
 
-        binding.btnUpdateQuote.setOnClickListener{
+        db = DbHelper(view.context)
+
+        updateQuote = view.findViewById(R.id.updateQuote)
+        updateAuthor =view.findViewById(R.id.updateAuthor)
+
+        updateQuote.text = quote.quote.toEditable()
+        updateAuthor.text = quote.author.toEditable()
+
+        //updating a quote
+        val btnUpdate = view.findViewById<Button>(R.id.btnUpdateQuote)
+        btnUpdate.setOnClickListener {
+            db.updateQuote(
+                quoteId,
+                updateQuote.text.toString(),
+                updateAuthor.text.toString(),
+            )
             Toast.makeText(this.view?.context, "Quote was updated", Toast.LENGTH_LONG).show()
         }
 
-
-        binding.btnDeleteQuote.setOnClickListener {
+        //deleting a quote
+        val btnDelete = view.findViewById<Button>(R.id.btnDeleteQuote)
+        btnDelete.setOnClickListener {
             db.deleteQuote(quoteId)
         }
 
         return view
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
+
 }
