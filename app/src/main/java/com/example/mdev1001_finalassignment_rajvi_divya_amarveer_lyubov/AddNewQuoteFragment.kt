@@ -14,8 +14,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class AddNewQuoteFragment : Fragment() {
 
     lateinit var db : DbHelper
-    lateinit var quote: EditText
-    lateinit var author: EditText
+    private lateinit var quote: EditText
+    private lateinit var author: EditText
+    private lateinit var errorMsg: String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_add_new_quote, container, false)
@@ -40,5 +41,22 @@ class AddNewQuoteFragment : Fragment() {
 
         return view
     }
+    private fun validateInputs(): Boolean{
+        var error = false
+        if (quote.text.toString().trim() == ""){
+            errorMsg = "Please, insert a quote"
+        }else if (author.text.toString().trim() == ""){
+            errorMsg = "Please, insert a quote author name"
+            error = true
+        }
+        if (error){
+            Toast.makeText(this.view?.context, errorMsg, Toast.LENGTH_LONG).show()
+
+            return false
+        }
+
+        return true
+    }
+
 
 }

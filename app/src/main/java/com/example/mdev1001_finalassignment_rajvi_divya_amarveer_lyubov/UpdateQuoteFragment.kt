@@ -19,6 +19,8 @@ class UpdateQuoteFragment : Fragment() {
     private var quoteId = 0
     lateinit var updateQuote: EditText
     lateinit var updateAuthor: EditText
+    private lateinit var errorMsg: String
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -65,6 +67,21 @@ class UpdateQuoteFragment : Fragment() {
 
         return view
     }
+    private fun validateInputs(): Boolean{
+        var error = false
+        if (updateQuote.text.toString().trim() == ""){
+            errorMsg = "Please, insert a quote"
+        }else if (updateAuthor.text.toString().trim() == ""){
+            errorMsg = "Please, insert a quote author name"
+            error = true
+        }
+        if (error){
+            Toast.makeText(this.view?.context, errorMsg, Toast.LENGTH_LONG).show()
 
+            return false
+        }
+
+        return true
+    }
 
 }
